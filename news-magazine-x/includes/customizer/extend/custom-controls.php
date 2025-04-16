@@ -138,8 +138,10 @@ add_action( 'customize_register', function( $wp_customize ) {
 					}
 				echo '</ul>';
 
-				echo '<a href="'. esc_url( $this->description ) .'" class="newsx-upgrade-pro-button" target="_blank">'. esc_html__( 'Upgrade to Pro', 'news-magazine-x' ) .'</a>';
-				echo '<a href="https://news-magazine-x-pro.wp-royal-themes.com/test-drive-demo/wp-content/plugins/open-house-theme-options/redirect.php?multisite=test-drive-demo" class="newsx-try-before-buy-button" target="_blank">'. esc_html__( 'Try Before Buy ➝', 'news-magazine-x' ) .'</a>';
+				// echo '<a href="'. esc_url( $this->description ) .'" class="newsx-upgrade-pro-button" target="_blank">'. esc_html__( 'Upgrade to Pro', 'news-magazine-x' ) .'</a>';
+				echo '<a href="https://news-magazine-x-pro.wp-royal-themes.com/test-drive-demo/wp-content/plugins/open-house-theme-options/redirect.php?multisite=test-drive-demo&section='. esc_attr( $this->section ) .'" class="newsx-try-before-buy-button" target="_blank">';
+					echo esc_html__( 'Try Options ➝', 'news-magazine-x' );
+				echo '</a>';
 				echo '</div>';
 		}
 	}

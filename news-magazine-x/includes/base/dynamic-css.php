@@ -1405,6 +1405,11 @@ function newsx_get_dynamic_css() {
 		]);
 	}
 
+	// Preloader
+	if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() && method_exists('Newsx_Core_Pro_Dynamic_CSS', 'get_preloader_styles') ) {
+		$parse_css .= Newsx_Core_Pro_Dynamic_CSS::get_preloader_styles();
+	}
+
     /* Responsive
     -------------------------------------------------- */
 	$parse_css .= newsx_minify_static_css('
@@ -1848,7 +1853,7 @@ function newsx_get_dark_mode_css() {
 	$dark_mode_css .= newsx_minify_static_css('
 		/* Background Color */
 		body.newsx-dark-mode, .site-content, .newsx-offcanvas-widgets-area, .newsx-mobile-menu-container, .search-form, .newsx-ajax-search-results, .newsx-table-of-contents h3:after, .newsx-single-post-media .image-caption,
-		.newsx-site-header .newsx-section-wrap, .newsx-site-footer .newsx-section-wrap, .newsx-desktop-menu .sub-menu {
+		.newsx-site-header .newsx-section-wrap, .newsx-site-footer .newsx-section-wrap, .newsx-desktop-menu .sub-menu, .newsx-preloader-wrap {
 			background-color: #222222;
 		}
 

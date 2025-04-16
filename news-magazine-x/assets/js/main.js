@@ -1406,6 +1406,23 @@ jQuery( document ).ready( function( $ ) {
         });
     }
 
+    /* Preloader
+    -------------------------------------------------- */
+    if ( $('.newsx-preloader-wrap').length ) {
+        setTimeout(function(){
+            $('.newsx-preloader-wrap > div').fadeOut( 600 );
+            $('.newsx-preloader-wrap').fadeOut( 1500 );
+        }, 300);
+
+        if ( $('body').hasClass('elementor-editor-active') ) {
+            setTimeout(function(){
+                $('.newsx-preloader-wrap > div').fadeOut( 600 );
+                $('.newsx-preloader-wrap').fadeOut( 1500 );
+            }, 300);
+        }
+    }
+    
+
     /* Tooltips
     -------------------------------------------------- */
     $('a[data-tooltip], .newsx-switch-to-light, .newsx-switch-to-dark').newsxTipsy({

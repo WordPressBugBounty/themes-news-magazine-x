@@ -73,34 +73,34 @@ function newsx_theme_setup() {
     // Enable editor styles.
     add_theme_support('editor-styles');
 
-    // Add default color palette support
-    add_theme_support('editor-color-palette', array(
-        array(
-            'name'  => esc_html__('Accent', 'news-magazine-x'),
-            'slug'  => 'accent',
-            'color' => newsx_get_option('global_color_accent'),
-        ),
-        array(
-            'name'  => esc_html__('Links', 'news-magazine-x'),
-            'slug'  => 'links',
-            'color' => newsx_get_option('global_color_links')['normal'],
-        ),
-        array(
-            'name'  => esc_html__('Headings', 'news-magazine-x'),
-            'slug'  => 'headings',
-            'color' => newsx_get_option('global_color_headings'),
-        ),
-        array(
-            'name'  => esc_html__('Text', 'news-magazine-x'),
-            'slug'  => 'text',
-            'color' => newsx_get_option('global_color_body_text'),
-        ),
-        array( 
-            'name'  => esc_html__('Meta', 'news-magazine-x'),
-            'slug'  => 'meta',
-            'color' => newsx_get_option('global_color_meta'),
-        ),
-    ));
+    // Add default color palette support // TODO Disable for now (Custom color for gutenberg paragraph was not working. support case: FMfcgzQZVJxnnmsTWPsWmtMFmdKsTwpk)
+    // add_theme_support('editor-color-palette', array(
+    //     array(
+    //         'name'  => esc_html__('Accent', 'news-magazine-x'),
+    //         'slug'  => 'accent',
+    //         'color' => newsx_get_option('global_color_accent'),
+    //     ),
+    //     array(
+    //         'name'  => esc_html__('Links', 'news-magazine-x'),
+    //         'slug'  => 'links',
+    //         'color' => newsx_get_option('global_color_links')['normal'],
+    //     ),
+    //     array(
+    //         'name'  => esc_html__('Headings', 'news-magazine-x'),
+    //         'slug'  => 'headings',
+    //         'color' => newsx_get_option('global_color_headings'),
+    //     ),
+    //     array(
+    //         'name'  => esc_html__('Text', 'news-magazine-x'),
+    //         'slug'  => 'text',
+    //         'color' => newsx_get_option('global_color_body_text'),
+    //     ),
+    //     array( 
+    //         'name'  => esc_html__('Meta', 'news-magazine-x'),
+    //         'slug'  => 'meta',
+    //         'color' => newsx_get_option('global_color_meta'),
+    //     ),
+    // ));
 
     // Add support for custom text color.
     add_theme_support('editor-font-colors');

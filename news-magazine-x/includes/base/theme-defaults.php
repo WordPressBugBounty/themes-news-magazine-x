@@ -2026,6 +2026,13 @@ function newsx_get_theme_defaults() {
 				'isLinked' => false,
 			],
 		],
+
+		// Preloader
+		'preloader_enable' => false,
+		'preloader_type' => 'logo',
+		'preloader_bg_color' => '#ffffff',
+		'preloader_anim_color' => '#000000',
+		'preloader_logo_width' => '200',
 	];
 
     return $theme_defaults;

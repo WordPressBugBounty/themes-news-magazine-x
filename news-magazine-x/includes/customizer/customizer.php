@@ -82,6 +82,9 @@ function newsx_include_customizer_files( $wp_customize ) {
     require_once NEWSX_CUSTOMIZER_DIR .'/sections/footer/elements/custom-html-2.php';
     require_once NEWSX_CUSTOMIZER_DIR .'/sections/footer/elements/social-icons.php';
     require_once NEWSX_CUSTOMIZER_DIR .'/sections/footer/elements/back-to-top.php';
+
+    // Preloader
+    require_once NEWSX_CUSTOMIZER_DIR .'/sections/preloader.php';
 }
 
 add_action( 'init', 'newsx_include_customizer_files' );

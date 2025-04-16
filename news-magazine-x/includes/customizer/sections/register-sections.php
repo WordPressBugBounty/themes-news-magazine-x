@@ -444,3 +444,11 @@ if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_c
         'priority'    => 80,
     ] );
 }
+
+if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code()) {
+    Kirki::add_section( 'newsx_section_preloader', [
+        'title'       => esc_html__( 'Preloader', 'news-magazine-x' ),
+        'tabs'        => newsx_get_section_tabs(),
+        'priority'    => 40,
+    ] );
+}
