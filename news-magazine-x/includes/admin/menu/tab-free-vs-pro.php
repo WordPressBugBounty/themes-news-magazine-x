@@ -244,6 +244,30 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <td><?php esc_html_e('4', 'news-magazine-x'); ?></td>
                 <td><?php esc_html_e('6', 'news-magazine-x'); ?></td>
             </tr>
+            <tr>
+                <td>
+                    <h3 class="feature-title"><?php esc_html_e('Page Preloader', 'news-magazine-x'); ?></h3>
+                    <p class="feature-description"><?php esc_html_e('Multiple animation styles and customizable settings for your page preloader.', 'news-magazine-x'); ?></p>
+                </td>
+                <td><span class="dashicons dashicons-no-alt"></span></td>
+                <td><span class="dashicons dashicons-yes-alt"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 class="feature-title"><?php esc_html_e('Access to PRO Starter Templates', 'news-magazine-x'); ?></h3>
+                    <p class="feature-description"><?php esc_html_e('Includes the full collection of Premium Starter Templates', 'news-magazine-x'); ?></p>
+                </td>
+                <td><span class="dashicons dashicons-no-alt"></span></td>
+                <td><span class="dashicons dashicons-yes-alt"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 class="feature-title"><?php esc_html_e('Free Localhost / Staging / Test Licenses', 'news-magazine-x'); ?></h3>
+                    <p class="feature-description"><?php esc_html_e('You can Activate the License on Staging/testing sites and this will not count as real activation.', 'news-magazine-x'); ?></p>
+                </td>
+                <td><span class="dashicons dashicons-no-alt"></span></td>
+                <td><span class="dashicons dashicons-yes-alt"></span></td>
+            </tr>
         </tbody>
     </table>
 

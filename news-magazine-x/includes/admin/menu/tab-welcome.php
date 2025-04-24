@@ -21,12 +21,19 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="newsx-theme-intro">
         <h1>
             <?php 
-                /* translators: %1$s: Welcome text, %2$s: Theme name, %3$s: FREE badge text */
-                printf( '%1$s %2$s <span class="newsx-badge-free">%3$s</span>',
-                    esc_html__('Welcome to', 'news-magazine-x'),
-                    esc_html($theme->get('Name')),
-                    esc_html__('FREE', 'news-magazine-x')
-                );
+                if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {
+                    printf( '%1$s %2$s <span class="newsx-badge-pro">%3$s</span>',
+                        esc_html__('Welcome to', 'news-magazine-x'),
+                        esc_html($theme->get('Name')), 
+                        esc_html__('PRO', 'news-magazine-x')
+                    );
+                } else {
+                    printf( '%1$s %2$s <span class="newsx-badge-free">%3$s</span>',
+                        esc_html__('Welcome to', 'news-magazine-x'),
+                        esc_html($theme->get('Name')),
+                        esc_html__('FREE', 'news-magazine-x')
+                    );
+                }
             ?>
         </h1>
         
@@ -60,19 +67,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <div class="newsx-settings-grid">
         <!-- Row 1 -->
+
         <div class="newsx-settings-card">
-            <h3><?php esc_html_e('Site Identity', 'news-magazine-x'); ?></h3>
-            <a href="<?php echo esc_url(admin_url('customize.php?autofocus[section]=title_tagline')); ?>" class="newsx-customize-link"><?php esc_html_e('Customize', 'news-magazine-x'); ?></a>
+            <h3><?php esc_html_e('Front Page', 'news-magazine-x'); ?></h3>
+            <a href="<?php echo esc_url(admin_url('customize.php?autofocus[section]=newsx_section_front_page')); ?>" class="newsx-customize-link"><?php esc_html_e('Customize', 'news-magazine-x'); ?></a>
+            
+            <a href="https://youtu.be/OrtzJs-wzlw?t=31" class="newsx-tutorial-link" target="_blank">
+                <span class="dashicons dashicons-video-alt3"></span>
+                <?php esc_html_e('Tutorial', 'news-magazine-x'); ?>
+            </a>
         </div>
 
         <div class="newsx-settings-card">
             <h3><?php esc_html_e('Header Builder', 'news-magazine-x'); ?></h3>
             <a href="<?php echo esc_url(admin_url('customize.php?autofocus[panel]=newsx_panel_header')); ?>" class="newsx-customize-link"><?php esc_html_e('Customize', 'news-magazine-x'); ?></a>
+        
+            <a href="https://youtu.be/OrtzJs-wzlw?t=213" class="newsx-tutorial-link" target="_blank">
+                <span class="dashicons dashicons-video-alt3"></span>
+                <?php esc_html_e('Tutorial', 'news-magazine-x'); ?>
+            </a>
         </div>
 
         <div class="newsx-settings-card">
             <h3><?php esc_html_e('Footer Builder', 'news-magazine-x'); ?></h3>
             <a href="<?php echo esc_url(admin_url('customize.php?autofocus[panel]=newsx_panel_footer')); ?>" class="newsx-customize-link"><?php esc_html_e('Customize', 'news-magazine-x'); ?></a>
+        
+            <a href="https://youtu.be/OrtzJs-wzlw?t=273" class="newsx-tutorial-link" target="_blank">
+                <span class="dashicons dashicons-video-alt3"></span>
+                <?php esc_html_e('Tutorial', 'news-magazine-x'); ?>
+            </a>
         </div>
 
         <!-- Row 2 -->
@@ -90,10 +113,9 @@ if ( ! defined( 'ABSPATH' ) ) {
             <h3><?php esc_html_e('Layout', 'news-magazine-x'); ?></h3>
             <a href="<?php echo esc_url(admin_url('customize.php?autofocus[section]=newsx_section_global_layout')); ?>" class="newsx-customize-link"><?php esc_html_e('Customize', 'news-magazine-x'); ?></a>
         </div>
-
         <div class="newsx-settings-card">
-            <h3><?php esc_html_e('Front Page', 'news-magazine-x'); ?></h3>
-            <a href="<?php echo esc_url(admin_url('customize.php?autofocus[section]=newsx_section_front_page')); ?>" class="newsx-customize-link"><?php esc_html_e('Customize', 'news-magazine-x'); ?></a>
+            <h3><?php esc_html_e('Site Identity', 'news-magazine-x'); ?></h3>
+            <a href="<?php echo esc_url(admin_url('customize.php?autofocus[section]=title_tagline')); ?>" class="newsx-customize-link"><?php esc_html_e('Customize', 'news-magazine-x'); ?></a>
         </div>
 
         <!-- Row 3 -->
