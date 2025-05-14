@@ -650,14 +650,18 @@ jQuery( document ).ready( function( $ ) {
     var $headerSearch = $('.newsx-header-search');
 
     $headerSearch.find('.newsx-search-icon').on('click', function() {
-        $headerSearch.toggleClass('active');
-
-        $headerSearch.find('input').val('').focus();
-
-        if ( $headerSearch.hasClass('header-search-s0') ) {
+        if ($headerSearch.hasClass('header-search-s1') && $headerSearch.hasClass('active')) {
             $headerSearch.find('.search-form').submit();
+        } else {
+            $headerSearch.toggleClass('active');
+            $headerSearch.find('input').val('').focus();
+
+            if ($headerSearch.hasClass('header-search-s0')) {
+                $headerSearch.find('.search-form').submit();
+            }
         }
     });
+    
 
     // Close search on click outside
     $(document).on('click', function (e) {

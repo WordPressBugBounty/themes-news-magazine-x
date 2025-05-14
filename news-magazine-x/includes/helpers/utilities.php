@@ -165,18 +165,21 @@ if ( !function_exists('newsx_get_main_query_args') ) {
             $posts_per_page = newsx_get_widget_posts_per_page( $instance, $widget );
             $orderby = isset($instance['orderby']) ? $instance['orderby'] : 'date';
             $offset = isset($instance['offset']) ? $instance['offset'] : 0;
+			$published_days = isset($instance['published_days']) ? $instance['published_days'] : 365;
 
 		// Element Options
         } else if ( !empty($option_prefix) ) {
             $posts_per_page = !empty(newsx_get_option($option_prefix .'_posts_per_page')) ? newsx_get_option($option_prefix .'_posts_per_page') : 6;
             $orderby = !empty(newsx_get_option($option_prefix .'_orderby')) ? newsx_get_option($option_prefix .'_orderby') : 'date';
             $offset = !empty(newsx_get_option($option_prefix .'_offset')) ? newsx_get_option($option_prefix .'_offset') : 0;
+			$published_days = !empty(newsx_get_option($option_prefix .'_published_days')) ? newsx_get_option($option_prefix .'_published_days') : 365;
 
 		// Default
 		} else {
 			$posts_per_page = 6;
 			$orderby = 'date';
 			$offset = 0;
+			$published_days = 365;
 		}
 
         // Get Paged
@@ -188,6 +191,19 @@ if ( !function_exists('newsx_get_main_query_args') ) {
 			$paged = 1;
 		}
 
+		// Date Query
+		$date_query = [];
+		
+		if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {
+			if ( ('popular-custom' === $orderby && str_contains($orderby, 'popular') && function_exists('pvc_get_most_viewed_posts')) || 'random-custom' === $orderby ) {
+				$date_query = [
+					[
+						'after' => $published_days .' days ago',
+					],
+				];
+			}
+		}
+
         // Dynamic
 		$args = [
 			'post_type' => 'post',
@@ -197,6 +213,7 @@ if ( !function_exists('newsx_get_main_query_args') ) {
 			'orderby' => $orderby,
 			'paged' => $paged,
 			'offset' => $offset,
+			'date_query' => $date_query,
 		];
 
 		if ( 'header_nt' !== $option_prefix ) {
