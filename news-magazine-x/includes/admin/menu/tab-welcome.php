@@ -171,7 +171,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <span class="newsx-star-rating-text"><?php esc_html_e('5 Stars', 'news-magazine-x'); ?></span>
     </div>
     <p><?php esc_html_e('We\'d love your feedback! Please take a moment to review the theme and share your thoughts.', 'news-magazine-x'); ?></p>
-    <p><a href="https://wordpress.org/support/theme/news-magazine-x/reviews/?filter=5#new-post" target="_blank"><?php esc_html_e('Leave a Review →', 'news-magazine-x'); ?></a></p>
+    <p><a href="https://wordpress.org/support/theme/news-magazine-x/reviews/" target="_blank"><?php esc_html_e('Leave a Review →', 'news-magazine-x'); ?></a></p>
 </div>
 
 <div class="newsx-sidebar-widget">

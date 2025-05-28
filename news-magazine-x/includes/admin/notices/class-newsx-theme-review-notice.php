@@ -90,7 +90,7 @@ class Newsx_Theme_Review_Notice {
             </p>
 
 			<div class="newsx-review-buttons">
-				<a href="https://wordpress.org/support/theme/news-magazine-x/reviews/?filter=5#new-post" class="btn button-primary" target="_blank">
+				<a href="https://wordpress.org/support/theme/news-magazine-x/reviews/" class="btn button-primary" target="_blank">
 					<span><?php esc_html_e( 'OK, you deserve it!', 'news-magazine-x' ); ?></span>
 				</a>
 
