@@ -495,7 +495,9 @@ function newsx_get_dynamic_css() {
 			.newsx-s0.newsx-float-sharing:not(.pos-outside) .sharing-icons,
 			.newsx-s0.newsx-float-sharing.pos-outside .newsx-post-sharing,
 			.newsx-post-meta .newsx-s0.newsx-static-sharing,
-			.newsx-post-sources .source-tag a {
+			.newsx-post-sources .source-tag a,
+			
+			.newsx-single-continue-reading a {
 				border-radius: 3px;
 			}
 			.newsx-tabs li:first-child {
@@ -1858,7 +1860,8 @@ function newsx_get_dark_mode_css() {
 		}
 
 		/* Background Color Light */
-		input, select, textarea {
+		input, select, textarea,
+		.comment-form input, .comment-form select, .comment-form textarea {
 			background-color: #272727;
 		}
 		.tipsy-inner {

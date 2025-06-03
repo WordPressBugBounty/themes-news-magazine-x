@@ -117,7 +117,7 @@ class Newsx_AJAX_Public {
     
     public function load_single_posts_by_ajax_callback() {
         // Verify nonce
-        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'load-single-posts' ) ) {
+        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'newsx-main' ) ) {
             wp_send_json_error( 'Invalid nonce.' );
             wp_die();
         }
@@ -136,7 +136,8 @@ class Newsx_AJAX_Public {
         setup_postdata( $post );
     
         // Get the next post
-        $next_post = get_adjacent_post( false, '', true );
+        $load_from_same_cat = newsx_get_option('bs_advanced_load_posts_same_cat');
+        $next_post = get_adjacent_post( $load_from_same_cat ? true : false, '', true );
     
         if ( ! empty( $next_post ) ) {
             $next_post_id = $next_post->ID;

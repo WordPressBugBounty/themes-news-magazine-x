@@ -2026,6 +2026,13 @@ function newsx_get_theme_defaults() {
 				'isLinked' => false,
 			],
 		],
+		// Blog Single: Advanced 
+		'bs_advanced_rpbar_enable' => false,
+		'bs_advanced_rpbar_color' => '#f84643',
+		'bs_advanced_rpbar_height' => '4',
+		'bs_advanced_load_posts_enable' => false,
+		'bs_advanced_load_posts_cont_read_enable' => true,
+		'bs_advanced_load_posts_same_cat' => false,
 
 		// Preloader
 		'preloader_enable' => false,

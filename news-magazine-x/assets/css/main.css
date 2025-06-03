@@ -4801,25 +4801,38 @@ article.entry-comments {
 }
 
 /* Load Posts with AJAX */
-.newsx-half-content {
+.newsx-single-wrap + .newsx-ring-loader {
+    margin: 50px 0 100px 45%;
+}
+
+.newsx-single-wrap + .newsx-ring-loader div {
+    width: 50px;
+    height: 50px;
+}
+
+.newsx-half-content .newsx-single-content-wrap {
   max-height: 1200px;
   overflow: hidden;
 }
 
-.newsx-single-read-more {
+.newsx-single-continue-reading {
   display: block;
   position: relative;
-  text-align: right;
+  text-align: center;
   width: 100%;
   padding: 10px;
 }
 
-.newsx-single-read-more a {
-  padding: 6px 10px;
-  border: 1px solid;
+.newsx-single-continue-reading a {
+  padding: 8px 12px;
+  color: #fff;
 }
 
-.newsx-single-read-more:before {
+.newsx-single-continue-reading a:hover {
+    color: #fff;
+}
+
+.newsx-single-continue-reading:before {
   content: "";
   position: absolute;
   left: 0;
@@ -4827,6 +4840,10 @@ article.entry-comments {
   width: 100%;
   height: 150px;
   background-image: linear-gradient(to top, #fff 0, transparent 100%);
+}
+
+.newsx-dark-mode .newsx-single-continue-reading:before {
+  background-image: linear-gradient(to top, #222222 0, transparent 100%);
 }
 
 /* Default Page */

@@ -4,9 +4,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+if (isset($args['post-id'])) {
+    $post = get_post($args['post-id']);
+    setup_postdata($post);
+}
+
 // Get Options
 $content_width = newsx_get_option( 'global_single_content_width' );
 $layout_preset = newsx_get_option( 'bs_header_layout_preset' );
+$cont_read_enable = newsx_get_option( 'bs_advanced_load_posts_cont_read_enable' );
 
 // Auto Load Next Posts
 $load_next_posts = newsx_get_option( 'bs_advanced_load_posts_enable' );
@@ -21,6 +27,10 @@ if ( !defined('NEWSX_CORE_PRO_VERSION') || !newsx_core_pro_fs()->can_use_premium
 $layout_class  = ' newsx-'. $layout_preset;
 $layout_class .= 'boxed' === $content_width ? ' newsx-container' : '';
 $layout_class .= !has_post_thumbnail() ? ' newsx-no-post-thumb': '';
+if ( $cont_read_enable && isset($args['post-id']) ) {
+    $layout_class .= ' newsx-half-content';
+}
+
 
 ?>
 
@@ -127,6 +137,20 @@ $layout_class .= !has_post_thumbnail() ? ' newsx-no-post-thumb': '';
             </article>
 
         </div><!-- .newsx-single-content-wrap -->
+
+        <?php 
+
+        if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {
+            if ( $cont_read_enable && isset($args['post-id']) ) {
+                echo '<div class="newsx-single-continue-reading">';
+                    echo '<a href="' . esc_url(get_the_permalink($args['post-id'])) . '">';
+                        echo esc_html__('Continue Reading', 'news-magazine-x');
+                    echo '</a>';
+                echo '</div>';
+            }
+        }
+
+        ?>
         
     </div><!-- #primary -->
 
@@ -135,3 +159,9 @@ $layout_class .= !has_post_thumbnail() ? ' newsx-no-post-thumb': '';
     </div><!-- .newsx-single-inner -->
 
 </div><!-- .newsx-single-wrap -->
+
+<?php 
+
+if (isset($args['post-id'])) {
+    wp_reset_postdata();
+}

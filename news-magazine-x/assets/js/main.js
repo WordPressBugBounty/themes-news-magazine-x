@@ -1282,7 +1282,6 @@ jQuery( document ).ready( function( $ ) {
                             },
                             success: function(response) {
                                 if (response.success) {
-
                                     let nextPostContent = $(response.data),
                                         nextPostID = '#' + nextPostContent.find('article').attr('id');
 
@@ -1297,6 +1296,9 @@ jQuery( document ).ready( function( $ ) {
                                     $('body').find('.newsx-ring-loader').remove();
                                     loadNext = false;
                                 }
+                            },
+                            error: function(response) {
+                                console.log(response);
                             }
                         });
                         return false; // Break the loop after loading the next post
@@ -1315,7 +1317,7 @@ jQuery( document ).ready( function( $ ) {
         }
     }
 
-    // NewsxLoadSinglePosts.init();
+    NewsxLoadSinglePosts.init();
  
 
     /* Tabs Widget
