@@ -194,8 +194,61 @@ if ( !function_exists('newsx_get_main_query_args') ) {
 		// Date Query
 		$date_query = [];
 		
+		// Handle Popular Posts Logic
+		if ( str_contains($orderby, 'popular') && function_exists('pvc_get_most_viewed_posts') ) {
+			if ( 'popular-custom' === $orderby ) {
+				$date_query = [
+					[
+						'after' => $published_days .' days ago',
+					],
+				];
+			}
+			
+			// For popular posts, we need to get the post IDs and use them in a standard query
+			$popular_args = [
+				'post_type' => 'post',
+				'posts_per_page' => $posts_per_page,
+				'offset' => $offset,
+				'date_query' => $date_query,
+			];
+
+			// Add taxonomy query if provided
+			$tax_query = newsx_get_tax_query_args( $instance );
+			if ( !empty($tax_query) ) {
+				$popular_args['tax_query'] = $tax_query;
+			}
+
+			// Add meta query for featured image (except for header_nt)
+			if ( 'header_nt' !== $option_prefix ) {
+				$popular_args['meta_query'] = array(array('key' => '_thumbnail_id'));
+			}
+
+			// Get popular posts
+			$popular_posts = pvc_get_most_viewed_posts($popular_args);
+			
+			// Extract post IDs from popular posts
+			$post_ids = [];
+			if ( !empty($popular_posts) ) {
+				foreach ( $popular_posts as $post ) {
+					$post_ids[] = $post->ID;
+				}
+			}
+			
+			// Return standard query args with post__in to maintain the popular posts order
+			return [
+				'post_type' => 'post',
+				'post__in' => $post_ids,
+				'orderby' => 'post__in', // This maintains the order from popular posts
+				'posts_per_page' => $posts_per_page,
+				'ignore_sticky_posts' => true,
+				'paged' => $paged,
+			];
+		}
+
+		// Handle Random Custom Logic
 		if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {
-			if ( ('popular-custom' === $orderby && str_contains($orderby, 'popular') && function_exists('pvc_get_most_viewed_posts')) || 'random-custom' === $orderby ) {
+			if ( 'random-custom' === $orderby ) {
+				$orderby = 'rand';
 				$date_query = [
 					[
 						'after' => $published_days .' days ago',
@@ -204,7 +257,7 @@ if ( !function_exists('newsx_get_main_query_args') ) {
 			}
 		}
 
-        // Dynamic
+        // Standard Query Args
 		$args = [
 			'post_type' => 'post',
 			'tax_query' => newsx_get_tax_query_args( $instance ),
@@ -223,6 +276,8 @@ if ( !function_exists('newsx_get_main_query_args') ) {
         return $args;
     }
 }
+
+
 
 /*
 ** Taxonomy Query Args.

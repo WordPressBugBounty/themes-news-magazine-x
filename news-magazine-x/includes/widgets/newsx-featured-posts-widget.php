@@ -152,7 +152,7 @@ class Newsx_Featured_Posts extends Newsx_Widget {
                         echo '<'. esc_html($title_tag) .'>';
                             echo '<a href="'. esc_url(get_permalink($post->ID)) .'" class="newsx-underline-hover">'. esc_html(get_the_title($post->ID)) .'</a>';
                         echo '</'. esc_html($title_tag) .'>';
-                        echo '<span>'. esc_html(get_the_date('M d, Y', $post->ID)) .'</span>';
+                        echo '<span>'. esc_html(get_the_date('', $post->ID)) .'</span>';
 
                         // Post Views
                         newsx_post_views_markup($post->ID);
