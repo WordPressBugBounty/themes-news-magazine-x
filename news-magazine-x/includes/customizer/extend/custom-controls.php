@@ -142,6 +142,10 @@ add_action( 'customize_register', function( $wp_customize ) {
 				echo '<a href="https://news-magazine-x-pro.wp-royal-themes.com/test-drive-demo/wp-content/plugins/open-house-theme-options/redirect.php?multisite=test-drive-demo&section='. esc_attr( $this->section ) .'" class="newsx-try-before-buy-button" target="_blank">';
 					echo esc_html__( 'Try Options ➝', 'news-magazine-x' );
 				echo '</a>';
+
+				echo '<a href="https://wp-royal-themes.com/themes/item-news-magazine-x-pro/?ref=newsx-customizer-upgrade-pro-button#download" class="newsx-try-before-buy-button" target="_blank">';
+					echo esc_html__( 'Upgrade to Pro ☆', 'news-magazine-x' );
+				echo '</a>';
 				echo '</div>';
 		}
 	}

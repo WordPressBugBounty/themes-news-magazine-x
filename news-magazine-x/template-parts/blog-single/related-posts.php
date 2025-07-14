@@ -56,9 +56,9 @@ if ( $related_posts->have_posts() ) : ?>
             <a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_post_thumbnail('newsx-330x220'); ?></a>
             <h5>
                 <a href="<?php echo esc_url( get_permalink() ); ?>">
-                    <?php
+                    <?php // by Duke: add mb_strlen and mb_substr to handle multibyte characters like Japanese text (漢字) correctly
 
-                    $title = strlen(html_entity_decode(get_the_title())) > 65 ? substr(html_entity_decode(get_the_title()), 0, 65) . ' ...' : get_the_title();
+                    $title = mb_strlen(html_entity_decode(get_the_title())) > 65 ? mb_substr(html_entity_decode(get_the_title()), 0, 65) . ' ...' : get_the_title();
                     echo esc_html($title);
 
                     ?>

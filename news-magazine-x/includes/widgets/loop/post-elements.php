@@ -16,25 +16,27 @@ function newsx_slider_thumbnail( $instance ) {
 }
 
 // Post Thumbnail
-function newsx_post_thumbnail( $instance, $widget = '', $class = '' ) {
-    $class  = '' !== $class ? ' '. $class : '';
-    $class .= ('magazine' === $widget) ? ' newsx-full-stretch' : '';
-    $size   = newsx_get_post_thumbnail_size($instance, $widget);
-    $style  = 'background-image: url('. get_the_post_thumbnail_url( get_the_ID(), $size ) .')';
+if ( !function_exists('newsx_post_thumbnail') ) {
+    function newsx_post_thumbnail( $instance, $widget = '', $class = '' ) {
+        $class  = '' !== $class ? ' '. $class : '';
+        $class .= ('magazine' === $widget) ? ' newsx-full-stretch' : '';
+        $size   = newsx_get_post_thumbnail_size($instance, $widget);
+        $style  = 'background-image: url('. get_the_post_thumbnail_url( get_the_ID(), $size ) .')';
 
-    if ( has_post_thumbnail() ) {
-        if ( 'magazine' === $widget ) {
-            echo '<a href="'. esc_url( get_permalink() ) .'"  style="'. esc_attr($style) .'" class="newsx-grid-image'. esc_attr($class) .'" title="'. esc_attr( get_the_title() ) .'"></a>';
-        } else {
-            $image_link = isset($instance['image_link']) && $instance['image_link'] ? true : false;
+        if ( has_post_thumbnail() ) {
+            if ( 'magazine' === $widget ) {
+                echo '<a href="'. esc_url( get_permalink() ) .'"  style="'. esc_attr($style) .'" class="newsx-grid-image'. esc_attr($class) .'" title="'. esc_attr( get_the_title() ) .'"></a>';
+            } else {
+                $image_link = isset($instance['image_link']) && $instance['image_link'] ? true : false;
 
-            if ( !defined('NEWSX_CORE_PRO_VERSION') || !newsx_core_pro_fs()->can_use_premium_code() ) {
-                $image_link = true;
+                if ( !defined('NEWSX_CORE_PRO_VERSION') || !newsx_core_pro_fs()->can_use_premium_code() ) {
+                    $image_link = true;
+                }
+
+                echo ($image_link) ? '<a href="'. esc_url( get_permalink() ) .'" class="newsx-grid-image'. esc_attr($class) .'" title="'. esc_attr( get_the_title() ) .'">' : '';
+                    the_post_thumbnail( $size, ['loading' => 'lazy'] );
+                echo ($image_link) ? '</a>' : '';
             }
-
-            echo ($image_link) ? '<a href="'. esc_url( get_permalink() ) .'" class="newsx-grid-image'. esc_attr($class) .'" title="'. esc_attr( get_the_title() ) .'">' : '';
-                the_post_thumbnail( $size, ['loading' => 'lazy'] );
-            echo ($image_link) ? '</a>' : '';
         }
     }
 }

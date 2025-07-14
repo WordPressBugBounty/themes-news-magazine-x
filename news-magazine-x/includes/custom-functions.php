@@ -509,7 +509,7 @@ function newsx_custom_category_list_markup( $separator = '', $post_id = 0 ) {
 ** Post Views Markup
 */
 function newsx_post_views_markup( $post_id ) {
-    if ( !function_exists('pvc_get_post_views') ) {
+    if ( !function_exists('pvc_get_post_views') || !defined('NEWSX_CORE_PRO_VERSION') || !newsx_core_pro_fs()->can_use_premium_code() ) {
         return;
     }
 
