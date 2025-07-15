@@ -175,7 +175,15 @@ function newsx_post_title( $instance, $class = '' ) {
 function newsx_post_excerpt( $instance, $class = '' ) {
     $class = '' !== $class ? ' '. $class : '';
     $count = isset( $instance['excerpt_letter_count'] ) ? $instance['excerpt_letter_count'] : 600;
-    $excerpt = '' !== $count ? implode('', array_slice( str_split(get_the_excerpt()), 0, absint($count) )) . '...' : get_the_excerpt();
+    $excerpt = get_the_excerpt();
+    
+    if ( '' !== $count ) {
+        if ( function_exists('mb_substr') ) {
+            $excerpt = mb_substr($excerpt, 0, absint($count)) . '...';
+        } else {
+            $excerpt = substr($excerpt, 0, absint($count)) . '...'; 
+        }
+    }
 
     if ( $count > 0 ) {
         echo '<div class="newsx-grid-excerpt'. esc_attr($class) .'">';
