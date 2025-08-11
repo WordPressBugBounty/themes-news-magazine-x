@@ -7,8 +7,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 $current_user = wp_get_current_user();
 $theme = wp_get_theme();
 
-// Get the current tab
-$current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'welcome';
+// Define allowed tabs for security
+$allowed_tabs = [
+	'welcome',
+	'starter-templates',
+	'support',
+	'free-vs-pro'
+];
+
+// Get the current tab with proper validation
+$current_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'welcome';
+
+// Validate that the tab is in the allowed list
+if ( ! in_array($current_tab, $allowed_tabs, true) ) {
+	$current_tab = 'welcome';
+}
 
 ?>
 
@@ -21,10 +34,10 @@ $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'welcome';
                     <img src="<?php echo esc_url(NEWSX_ADMIN_URL . '/assets/images/logo.png'); ?>" alt="<?php esc_attr_e('News Magazine X', 'news-magazine-x'); ?>">
                 </div>
                 <div class="newsx-menu newsx-flex">
-                    <a href="<?php echo esc_url(admin_url('admin.php?page=newsx-options&tab=welcome')); ?>" class="newsx-inline-flex newsx-items-center <?php echo ($current_tab === 'welcome') ? 'active' : ''; ?>"><?php esc_html_e('Welcome', 'news-magazine-x'); ?></a>
-                    <a href="<?php echo esc_url(admin_url('admin.php?page=newsx-options&tab=starter-templates')); ?>" class="newsx-inline-flex newsx-items-center <?php echo ($current_tab === 'starter-templates') ? 'active' : ''; ?>"><?php esc_html_e('Starter Templates', 'news-magazine-x'); ?> <span class="dashicons dashicons-star-filled"></span></a>
-                    <a href="<?php echo esc_url(admin_url('admin.php?page=newsx-options&tab=support')); ?>" class="newsx-inline-flex newsx-items-center <?php echo ($current_tab === 'support') ? 'active' : ''; ?>"><?php esc_html_e('Support', 'news-magazine-x'); ?></a>
-                    <a href="<?php echo esc_url(admin_url('admin.php?page=newsx-options&tab=free-vs-pro')); ?>" class="newsx-inline-flex newsx-items-center <?php echo ($current_tab === 'free-vs-pro') ? 'active' : ''; ?>"><?php esc_html_e('Free vs Pro', 'news-magazine-x'); ?></a>
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=newsx-options&tab=welcome')); ?>" class="newsx-inline-flex newsx-items-center <?php echo ('welcome' !== $current_tab) ? '' : 'active'; ?>"><?php esc_html_e('Welcome', 'news-magazine-x'); ?></a>
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=newsx-options&tab=starter-templates')); ?>" class="newsx-inline-flex newsx-items-center <?php echo ('starter-templates' !== $current_tab) ? '' : 'active'; ?>"><?php esc_html_e('Starter Templates', 'news-magazine-x'); ?> <span class="dashicons dashicons-star-filled"></span></a>
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=newsx-options&tab=support')); ?>" class="newsx-inline-flex newsx-items-center <?php echo ('support' !== $current_tab) ? '' : 'active'; ?>"><?php esc_html_e('Support', 'news-magazine-x'); ?></a>
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=newsx-options&tab=free-vs-pro')); ?>" class="newsx-inline-flex newsx-items-center <?php echo ('free-vs-pro' !== $current_tab) ? '' : 'active'; ?>"><?php esc_html_e('Free vs Pro', 'news-magazine-x'); ?></a>
                 </div>
             </div>
 
@@ -53,7 +66,7 @@ $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'welcome';
         
         <div class="newsx-page-content-main">
 
-        <?php include NEWSX_INCLUDES_DIR . '/admin/menu/tab-' . esc_html($current_tab) . '.php'; ?>
+        <?php include NEWSX_INCLUDES_DIR . '/admin/menu/tab-' . $current_tab . '.php'; ?>
 
     </div> <!-- End of Content -->
 
