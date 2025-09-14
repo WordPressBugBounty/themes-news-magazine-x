@@ -2,9 +2,9 @@
 Contributors: WP Royal Themes
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tested up to: 6.8.1
+Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 1.2.38
+Stable tag: 1.2.39
 Tags: news, blog, entertainment, one-column, two-columns, grid-layout, list-layout, block-styles, right-sidebar, custom-header, flexible-header, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, rtl-language-support, footer-widgets, theme-options, threaded-comments, translation-ready, e-commerce
 
 
