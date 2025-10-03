@@ -1881,9 +1881,12 @@ function newsx_get_dark_mode_css() {
 		.newsx-table-of-contents, .newsx-table-of-contents > div:before,
 		.newsx-s2.newsx-category-list .category-meta,
 		.newsx-s0.newsx-float-sharing:not(.pos-outside) .sharing-icons, .newsx-s0.newsx-float-sharing.pos-outside .newsx-post-sharing,
-		.newsx-offcanvas-widgets-area::-webkit-scrollbar-thumb, .newsx-offcanvas-widgets-area::-webkit-scrollbar-thumb:hover,
 		.header-search-s2.active .search-form, .newsx-ajax-search-results,
 		.newsx-dark-mode-switcher {
+			background-color: #333333 !important;
+		}
+		.newsx-offcanvas-widgets-area::-webkit-scrollbar-thumb,
+		.newsx-offcanvas-widgets-area::-webkit-scrollbar-thumb:hover  {
 			background-color: #333333 !important;
 		}
 		.header-search-s2 .search-form::after {
@@ -1970,6 +1973,10 @@ function newsx_get_dark_mode_css() {
 			fill: #fff;
 			color: #fff;
 		}
+		:not(.newsx-original-colors) .newsx-post-sharing .sharing-icons svg {
+			fill: #fff;
+			color: #fff;
+		}
 		.newsx-post-format-icon {
 			border-color: #f9f9f9;
 		}
@@ -1977,10 +1984,10 @@ function newsx_get_dark_mode_css() {
 			color: #f9f9f9;
 		}
 		:where(.newsx-s2, .newsx-s2-sr, .newsx-s2-br) > .newsx-post-sharing .sharing-icons .copy-share {
-			border-color: #555;
+			border-color: #999;
 		}
 		:where(.newsx-s2, .newsx-s2-sr, .newsx-s2-br) > .newsx-post-sharing .sharing-icons .copy-share svg {
-			fill: #555;
+			fill: #999;
 		}
 		:where(.newsx-s2, .newsx-s2-sr, .newsx-s2-br).newsx-float-sharing.newsx-original-colors:not(.newsx-s0) .sharing-icons a {
 			background-color: transparent;
