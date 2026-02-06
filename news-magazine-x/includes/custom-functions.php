@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*
 ** Customizer Edit Button Markup.
 */
+if ( ! function_exists( 'newsx_customizer_edit_button_markup' ) ) {
 function newsx_customizer_edit_button_markup( $section = '' ) {
     $output = '';
 
@@ -24,10 +25,12 @@ function newsx_customizer_edit_button_markup( $section = '' ) {
 
     return $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
+}
 
 /*
 ** Render Header/Footer Element by Position
 */
+if ( ! function_exists( 'newsx_hf_builder_grid_row_markup' ) ) {
 function newsx_hf_builder_grid_row_markup($compontent, $row, $elements) {    
     // Set location
     $cmp_location = 'header' === $compontent ? 'hd_'. $row : 'ft_'. $row;
@@ -164,10 +167,12 @@ function newsx_hf_builder_grid_row_markup($compontent, $row, $elements) {
         echo '</div>';
     }
 }
+}
 
 /*
 ** Menu Fallback
 */
+if ( ! function_exists( 'newsx_menu_fallback' ) ) {
 function newsx_menu_fallback() {
     if ( current_user_can( 'edit_theme_options' ) ) {
         echo '<ul class="newsx-nav-menu newsx-flex">';
@@ -179,10 +184,12 @@ function newsx_menu_fallback() {
         echo '</ul>';
     }
 }
+}
 
 /*
 ** Theme Default Icons Markup
 */
+if ( ! function_exists( 'newsx_default_icon_markup' ) ) {
 function newsx_default_icon_markup( $icon, $is_echo = false ) {
     switch ( $icon ) {
         case 'home':
@@ -216,10 +223,12 @@ function newsx_default_icon_markup( $icon, $is_echo = false ) {
         return $output;
     }
 }
+}
 
 /*
 ** Social Icons Markup
 */
+if ( ! function_exists( 'newsx_social_icons_markup' ) ) {
 function newsx_social_icons_markup( $location = 'header', $class = '' ) {
     $social_icons = newsx_get_option($location .'_social_icons');
     $show_tooltips = newsx_get_option($location .'_si_tooltips');
@@ -249,10 +258,12 @@ function newsx_social_icons_markup( $location = 'header', $class = '' ) {
         echo '</div>';
     }
 }
+}
 
 /*
 ** Weather Icon Markup
 */
+if ( ! function_exists( 'newsx_weather_icon_markup' ) ) {
 function newsx_weather_icon_markup( $name = '', $id = 'weather' ) {
 	switch ( $name ) {
 		case 'cloudy'   :
@@ -305,10 +316,12 @@ function newsx_weather_icon_markup( $name = '', $id = 'weather' ) {
             break;
 	}
 }
+}
 
 /*
 ** Sidebar Widgets Markup
 */
+if ( ! function_exists( 'newsx_dynamic_sidebar' ) ) {
 function newsx_dynamic_sidebar( $sidebar_id ) {
     if ( is_active_sidebar( $sidebar_id ) ) {
         dynamic_sidebar( $sidebar_id );
@@ -324,10 +337,12 @@ function newsx_dynamic_sidebar( $sidebar_id ) {
         echo '</div>';
     }
 }
+}
 
 /*
 ** General Sidebar Widgets Markup
 */
+if ( ! function_exists( 'newsx_general_sidebar_markup' ) ) {
 function newsx_general_sidebar_markup( $display, $side ) {
     $display = newsx_get_option( $display );
 
@@ -339,10 +354,12 @@ function newsx_general_sidebar_markup( $display, $side ) {
         get_template_part( 'template-parts/sidebars/'. $side .'-sidebar', '', ['page' => 'general'] );
     }
 }
+}
 
 /*
 ** Front Page Row Markup
 */
+if ( ! function_exists( 'newsx_front_page_row_markup' ) ) {
 function newsx_front_page_row_markup( $args ) {
     $layout = $args['layout'];
     $layout_class  = 'newsx-'. $layout;
@@ -369,10 +386,12 @@ function newsx_front_page_row_markup( $args ) {
         echo '</div>';
     echo '</div>';
 }
+}
 
 /*
 ** Post Format Icon Markup
 */
+if ( ! function_exists( 'newsx_post_format_icon_markup' ) ) {
 function newsx_post_format_icon_markup( $id = null ) {
     if ( !defined('NEWSX_CORE_PRO_VERSION') || !newsx_core_pro_fs()->can_use_premium_code() ) {
         return;
@@ -397,24 +416,28 @@ function newsx_post_format_icon_markup( $id = null ) {
         echo '</span>';
     }
 }
+}
 
 /*
 ** Reading Progress Bar Markup
 */
+if ( ! function_exists( 'newsx_reading_progress_bar_markup' ) ) {
 function newsx_reading_progress_bar_markup() {
     if ( newsx_get_option('bs_advanced_rpbar_enable') ) {
         echo '<div class="newsx-reading-progress-bar"></div>';
     }
 }
+}
 
 /*
 ** Breadcrumbs Markup
 */
+if ( ! function_exists( 'newsx_breadcrumbs_markup' ) ) {
 function newsx_breadcrumbs_markup( $separator = ' / ', $page = 'single' ) {
     echo '<div class="newsx-breadcrumbs">';
 
     // Home Link
-    echo '<a href="'. esc_url(get_home_url()) .'">'. esc_html('Home', 'news-magazine-x') .'</a>';
+    echo '<a href="'. esc_url(get_home_url()) .'">'. esc_html__( 'Home', 'news-magazine-x' ) .'</a>';
     
     // Single Post
     if ( 'single' === $page ) {
@@ -456,10 +479,12 @@ function newsx_breadcrumbs_markup( $separator = ' / ', $page = 'single' ) {
 
     echo '</div>';
 }
+}
 
 /*
 ** Custom Category List Markup
 */
+if ( ! function_exists( 'newsx_custom_category_list_markup' ) ) {
 function newsx_custom_category_list_markup( $separator = '', $post_id = 0 ) {
     // Get the post ID
     $post_id = ( $post_id ) ? $post_id : get_the_ID();
@@ -504,10 +529,12 @@ function newsx_custom_category_list_markup( $separator = '', $post_id = 0 ) {
 
     return '';
 }
+}
 
 /*
 ** Post Views Markup
 */
+if ( ! function_exists( 'newsx_post_views_markup' ) ) {
 function newsx_post_views_markup( $post_id ) {
     if ( !function_exists('pvc_get_post_views') || !defined('NEWSX_CORE_PRO_VERSION') || !newsx_core_pro_fs()->can_use_premium_code() ) {
         return;
@@ -519,10 +546,12 @@ function newsx_post_views_markup( $post_id ) {
 
     echo '<span class="newsx-post-views">'. esc_html($post_views) . esc_html__('&nbsp;Views', 'news-magazine-x') .'</span>';
 }
+}
 
 /*
 ** Post Sharing Markup
 */
+if ( ! function_exists( 'newsx_post_sharing_markup' ) ) {
 function newsx_post_sharing_markup( $position = 'static' ) {
     global $post;
 
@@ -723,10 +752,12 @@ function newsx_post_sharing_markup( $position = 'static' ) {
 
     echo '</div>'; // $wrapper_class
 }
+}
 
 /*
 ** Archive Page Header Markup
 */
+if ( ! function_exists( 'newsx_archive_page_header_markup' ) ) {
 function newsx_archive_page_header_markup( $page, $breadcrumbs ) {
     echo '<div class="newsx-archive-page-header">';
 
@@ -799,4 +830,5 @@ function newsx_archive_page_header_markup( $page, $breadcrumbs ) {
     }
 
     echo '</div>';
+}
 }

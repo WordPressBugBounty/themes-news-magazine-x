@@ -305,13 +305,13 @@ function newsx_get_dynamic_css() {
 	if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {
 		$parse_css .= Newsx_Core_Pro_Dynamic_CSS::get_global_typography();
 	} else {
-		$heading_font_selector = 'h1, h1 .author-name, h2, h3, h4, h5, h6, .widget_block .wp-block-quote p, .widget_block table thead th, .widget_block table tfoot tr';
+		$heading_font_selector = 'h1:not(.site-title), h1 .author-name, h2, h3, h4, h5, h6, .widget_block .wp-block-quote p, .widget_block table thead th, .widget_block table tfoot tr';
 		$global_font_heading = newsx_get_option('global_font_heading');
 
 		$parse_css .= newsx_get_typography_css($global_font_heading, $heading_font_selector);
 	
 		// Custom Heading Fonts 
-		$parse_css .= newsx_get_typography_css(newsx_get_option('global_font_h1'), 'h1');
+		$parse_css .= newsx_get_typography_css(newsx_get_option('global_font_h1'), 'h1:not(.site-title)');
 		$parse_css .= newsx_get_typography_css(newsx_get_option('global_font_h2'), 'h2');
 		$parse_css .= newsx_get_typography_css(newsx_get_option('global_font_h3'), 'h3');
 		$parse_css .= newsx_get_typography_css(newsx_get_option('global_font_h4'), 'h4');
@@ -707,7 +707,7 @@ function newsx_get_dynamic_css() {
 		]);
 	}
 
-	$parse_css .= newsx_get_typography_css(newsx_get_option('logo_title_font'), '.newsx-site-title-tagline');
+	$parse_css .= newsx_get_typography_css(newsx_get_option('logo_title_font'), '.newsx-site-title-tagline, .newsx-site-title-tagline .site-title');
 	$parse_css .= newsx_get_resp_slider_control_css(newsx_get_option('logo_title_font_size'), '.newsx-site-title-tagline .site-title', 'font-size', 'px');
 	$parse_css .= newsx_get_resp_slider_control_css(newsx_get_option('logo_tagline_font_size'), '.newsx-site-title-tagline .site-description', 'font-size', 'px');
 	$parse_css .= newsx_get_resp_spacing_css(newsx_get_option('logo_margin'), '.newsx-site-identity', 'margin');
@@ -1256,6 +1256,12 @@ function newsx_get_dynamic_css() {
 
 	/* Blog Single Options
     -------------------------------------------------- */
+	if ( defined('NEWSX_CORE_PRO_VERSION') && function_exists('newsx_core_pro_fs') && newsx_core_pro_fs()->can_use_premium_code() ) {
+		if ( method_exists( 'Newsx_Core_Pro_Dynamic_CSS', 'get_blog_single_featured_caption_styles' ) ) {
+			$parse_css .= Newsx_Core_Pro_Dynamic_CSS::get_blog_single_featured_caption_styles();
+		}
+	}
+
 	// Post Meta
 	if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {
 		$parse_css .= Newsx_Core_Pro_Dynamic_CSS::get_blog_single_header_post_meta_styles();

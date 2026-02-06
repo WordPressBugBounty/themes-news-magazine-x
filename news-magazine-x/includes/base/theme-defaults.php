@@ -269,6 +269,7 @@ function newsx_get_theme_defaults() {
 			'mobile'  => ''
 		],
 		'site_title_visibility' => [ 'desktop', 'tablet', 'mobile' ],
+		'site_title_tag' => 'default',
 		'site_tagline_visibility' => [ 'desktop', 'tablet', 'mobile' ],
 		'section_hd_middle_bg' => [
 			'background-tabs' 		=> 'color',
@@ -1760,6 +1761,14 @@ function newsx_get_theme_defaults() {
 
 		// Blog Single
 		'bs_header_layout_preset' => 's5',
+		'bs_featured_image_headline' => '',
+		'bs_featured_image_show_caption' => false,
+		'bs_featured_image_align' => [
+			'desktop' => 'left',
+			'tablet'  => 'left',
+			'mobile'  => 'left',
+		],
+		'bs_featured_image_caption_italic' => false,
 		'bs_header_show_breadcrumbs' => true,
 		'bs_header_show_categories' => true,
 		'bs_header_show_author' => false,

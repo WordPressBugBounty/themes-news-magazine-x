@@ -60,6 +60,7 @@ function newsx_include_customizer_files( $wp_customize ) {
 
     // Blog Single Sections
     require_once NEWSX_CUSTOMIZER_DIR .'/sections/blog-single/header.php';
+    require_once NEWSX_CUSTOMIZER_DIR .'/sections/blog-single/featured.php';
     require_once NEWSX_CUSTOMIZER_DIR .'/sections/blog-single/table-of-contents.php';
     require_once NEWSX_CUSTOMIZER_DIR .'/sections/blog-single/content.php';
     require_once NEWSX_CUSTOMIZER_DIR .'/sections/blog-single/sharing.php';

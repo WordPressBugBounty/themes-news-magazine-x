@@ -269,7 +269,14 @@ Kirki::add_section( 'newsx_section_bs_header', [
     'priority'    => 10,
 ] );
 
-if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {   
+if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {
+    Kirki::add_section( 'newsx_section_bs_featured', [
+        'title'       => esc_html__( 'Featured Image', 'news-magazine-x' ),
+        'panel'       => 'newsx_panel_blog_single',
+        // 'tabs'        => newsx_get_section_tabs(),
+        'priority'    => 15,
+    ] );
+
     Kirki::add_section( 'newsx_section_bs_toc', [
         'title'       => esc_html__( 'Table of Contents', 'news-magazine-x' ),
         'panel'       => 'newsx_panel_blog_single',

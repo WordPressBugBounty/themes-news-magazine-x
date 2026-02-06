@@ -66,6 +66,10 @@ class Newsx_AJAX_Public {
     
         // Define your query parameters based on the AJAX request
         $args = json_decode(stripslashes($_POST['_main_query_args']), true);
+
+        if ( isset($args['post_status']) && $args['post_status'] !== 'publish' ) {
+            wp_send_json_error( 'Invalid post status', 403 );
+        }
     
         $query = new WP_Query($args);
         $post_count = $query->found_posts;
@@ -86,6 +90,10 @@ class Newsx_AJAX_Public {
         $instance = json_decode(stripslashes($_POST['instance']), true);
 
         $args = $instance['_main_query_args'];
+
+        if ( isset($args['post_status']) && $args['post_status'] !== 'publish' ) {
+            wp_send_json_error( 'Invalid post status', 403 );
+        }
         
         $query = new WP_Query($args);
     

@@ -1141,6 +1141,10 @@ body.rtl .tipsy-e .tipsy-arrow {
 }
 
 /* Header Logo */
+.newsx-site-title-tagline .site-title {
+    line-height: 1;
+}
+
 .newsx-site-title-tagline .site-title a {
   transition: all 0.2s ease;
 }
@@ -4110,6 +4114,10 @@ body:where(.page, .elementor-page, .elementor-editor-wp-page) #primary {
 
 .newsx-single-post-media iframe {
   width: 100%;
+}
+
+.newsx-single-post-media-caption {
+  margin-top: 10px;
 }
 
 /* Show later in JS */

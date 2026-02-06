@@ -9,7 +9,7 @@ class Newsx_Welcome_Notice {
 		add_action( 'wp_loaded', [$this, 'hide_notices'], 15 );
 		add_action( 'after_switch_theme', [$this, 'erase_ignored_notice' ] );
 	}
-	
+
 
 	public function welcome_notice() {
 		add_action( 'admin_init', [$this, 'enqueue_scripts' ] );
@@ -18,7 +18,7 @@ class Newsx_Welcome_Notice {
 			if (isset($_GET['page']) && 'newsx-options' === $_GET['page']) {
 				return;
 			}
-			
+
 			add_action( 'admin_notices', [$this, 'welcome_notice_markup' ] );
 		}
 	}
@@ -126,7 +126,7 @@ class Newsx_Welcome_Notice {
 			}
 		}
 	}
-    
+
     public function erase_ignored_notice() {
         delete_transient('newsx_admin_notice_welcome');
     }
@@ -143,7 +143,10 @@ class Newsx_Welcome_Notice {
                 'ajaxurl' => admin_url('admin-ajax.php'),
                 'nonce' => wp_create_nonce('newsx-activate-required-plugins'),
 				'installing_text' => esc_html__( 'Installing Starter Templates', 'news-magazine-x' ),
-                'core_installed' => newsx_is_plugin_installed( 'news-magazine-x-core' ) ? 'yes' : 'no'
+                'core_installed' => newsx_is_plugin_installed( 'news-magazine-x-core' ) ? 'yes' : 'no',
+                'core_active' => is_plugin_active( 'news-magazine-x-core/news-magazine-x-core.php' ) ? 'yes' : 'no',
+                'backup_installed' => newsx_is_plugin_installed( 'royal-backup-reset' ) ? 'yes' : 'no',
+                'backup_active' => is_plugin_active( 'royal-backup-reset/royal-backup-reset.php' ) ? 'yes' : 'no'
             ]
         );
 	}

@@ -53,8 +53,24 @@ Kirki::add_field( 'newsx_theme_config', [
     'default' => get_bloginfo( 'name' ),
     'section' => 'title_tagline',
 	'tab' => 'general',
-	'divider' => 'newsx-divider-bottom newsx-group-divider-top',
+	'divider' => ' newsx-group-divider-top',
     'priority' => 50,
+] );
+
+Kirki::add_field( 'newsx_theme_config', [
+    'type' => 'select',
+    'settings' => 'newsx_options[site_title_tag]',
+    'section' => 'title_tagline',
+    'tab' => 'general',
+    'label' => esc_html__( 'Site Title Tag', 'news-magazine-x' ),
+    'description' => esc_html__( 'Only applied to Front Page and Blog Page.', 'news-magazine-x' ),
+    'default' => 'default',
+    'choices' => [
+        'default' => esc_html__( 'Default', 'news-magazine-x' ),
+        'h1' => esc_html__( 'H1 (Adaptive)', 'news-magazine-x' ),
+    ],
+	'divider' => 'newsx-divider-bottom',
+    'priority' => 51,
 ] );
 
 Kirki::add_field( 'newsx_theme_config', [

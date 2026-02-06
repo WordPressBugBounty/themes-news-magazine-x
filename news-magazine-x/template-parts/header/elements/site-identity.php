@@ -41,13 +41,15 @@ if ( has_custom_logo() || $display_site_title || $display_site_tagline ) :
 	}
 
 	if ( $display_site_title || $display_site_tagline ) {
+		$site_title_tag = 'h1' === newsx_get_option('site_title_tag') && (is_home() || is_front_page());
+
 		$html .= '<div class="newsx-site-title-tagline">';
 			if ( $display_site_title ) {
-				$html .= '<span class="site-title">';
+				$html .= $site_title_tag ? '<h1 class="site-title">' : '<span class="site-title">';
 				$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr__( 'Home', 'news-magazine-x' ) . '" rel="home">';
 				$html .= esc_html( get_bloginfo( 'name' ) );
 				$html .= '</a>';
-				$html .= '</span>';
+				$html .= $site_title_tag ? '<h1>' : '</span>';
 			}
 
 			if ( $display_site_tagline && '' !== get_bloginfo( 'description' ) ) {

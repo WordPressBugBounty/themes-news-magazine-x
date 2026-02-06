@@ -51,6 +51,17 @@ if ( $cont_read_enable && isset($args['post-id']) ) {
             get_template_part( 'template-parts/blog-single/media' );
             get_template_part( 'template-parts/blog-single/header' );
         echo '</div>';
+
+        // Add Featured image caption
+        if ( defined('NEWSX_CORE_PRO_VERSION') && newsx_core_pro_fs()->can_use_premium_code() ) {
+            $thumbnail_id = get_post_thumbnail_id();
+            if ( $thumbnail_id && newsx_get_option('bs_featured_image_show_caption') ) {
+                $caption = wp_get_attachment_caption( $thumbnail_id );
+                if ( $caption ) {
+                    echo '<p class="newsx-single-post-media-caption">' . esc_html( $caption ) . '</p>';
+                }
+            }
+        }
     } elseif ( 's4' === $layout_preset ) {
         get_template_part( 'template-parts/blog-single/header' );
     } elseif ( 's7' === $layout_preset ) {

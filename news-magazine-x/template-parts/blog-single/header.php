@@ -82,7 +82,7 @@ echo '<div class="newsx-post-meta newsx-flex">';
                         if ( $show_meta_icons ) {
                             echo newsx_get_svg_icon('clock');
                         }
-                        echo esc_html($reading_time) . esc_html(' Mins Read', 'news-magazine-x');
+                        echo esc_html($reading_time) . ' ' . esc_html__( 'Mins Read', 'news-magazine-x' );
                     echo '</div>';
                 }
 
