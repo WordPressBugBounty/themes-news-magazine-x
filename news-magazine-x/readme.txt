@@ -4,7 +4,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 1.2.53
+Stable tag: 1.2.54
 Tags: news, blog, entertainment, one-column, two-columns, grid-layout, list-layout, block-styles, right-sidebar, custom-header, flexible-header, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, rtl-language-support, footer-widgets, theme-options, threaded-comments, translation-ready, e-commerce
 
 
@@ -23,7 +23,7 @@ Works perfectly with all major drag-and-drop page builders like Elementor, Guten
 
 == Copyright ==
 
-News Magazine X, Copyright 2025 wp-royal-themes.com
+News Magazine X, Copyright 2026 wp-royal-themes.com
 It is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
