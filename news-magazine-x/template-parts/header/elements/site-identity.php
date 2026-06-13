@@ -49,7 +49,7 @@ if ( has_custom_logo() || $display_site_title || $display_site_tagline ) :
 				$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr__( 'Home', 'news-magazine-x' ) . '" rel="home">';
 				$html .= esc_html( get_bloginfo( 'name' ) );
 				$html .= '</a>';
-				$html .= $site_title_tag ? '<h1>' : '</span>';
+				$html .= $site_title_tag ? '</h1>' : '</span>';
 			}
 
 			if ( $display_site_tagline && '' !== get_bloginfo( 'description' ) ) {

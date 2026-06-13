@@ -310,7 +310,9 @@ class Newsx_Social_Icons extends Newsx_Widget {
             $this->render_social_icon( $instance, 'soundcloud', 'Soundcloud' );
             $this->render_social_icon( $instance, 'vimeo', 'Vimeo' );
             $this->render_social_icon( $instance, 'dribbble', 'Dribbble' );
-        
+            if ( defined( 'NEWSX_CORE_PRO_VERSION' ) && newsx_core_pro_fs()->can_use_premium_code() ) {
+                $this->render_social_icon( $instance, 'bluesky', 'Bluesky' );
+            }
         echo '</div>';
 
 

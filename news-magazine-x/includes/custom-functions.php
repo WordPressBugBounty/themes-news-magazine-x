@@ -713,6 +713,16 @@ function newsx_post_sharing_markup( $position = 'static' ) {
             echo '</a>';
         }
 
+        if ( defined( 'NEWSX_CORE_PRO_VERSION' ) && newsx_core_pro_fs()->can_use_premium_code() && newsx_get_option( 'bs_sharing_bluesky', false ) ) {
+            $bluesky_src = 'https://bsky.app/intent/compose?text=' . rawurlencode( $post_title . ' ' . $permalink );
+            $data_tooltip = $show_tooltips ? 'data-tooltip="'. esc_html__('Bluesky', 'news-magazine-x') .'" data-gravity="'. esc_attr($tipsy_dir) .'"' : '';
+
+            echo '<a class="bluesky-share" target="_blank" href="' . esc_url( $bluesky_src ) . '" '. $data_tooltip .' rel="nofollow">';
+                echo newsx_get_svg_icon('bluesky');
+                echo ($show_labels) ? '<span class="share-label">'. esc_html__('Bluesky', 'news-magazine-x') .'</span>' : '';
+            echo '</a>';
+        }
+
         if ( newsx_get_option( 'bs_sharing_email' ) ) {
             $mail_src = 'mailto:?subject=' . get_the_title( $post_id ) . ' BODY=' . sprintf( esc_html__( 'I found this article interesting and thought of sharing it with you. Check it out: %s', 'news-magazine-x' ), $permalink );
             $data_tooltip = $show_tooltips ? 'data-tooltip="'. esc_html__('Email', 'news-magazine-x') .'" data-gravity="'. esc_attr($tipsy_dir) .'"' : '';

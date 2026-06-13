@@ -3921,6 +3921,12 @@ body:not(.newsx-dark-mode) .newsx-mobile-menu-toggle + .newsx-mobile-menu-contai
   grid-column: 1 / -1; /* Full width */
 }
 
+@media screen and (max-width: 600px) {
+  .newsx-blog-pagination {
+    flex-wrap: wrap;
+  }
+}
+
 .newsx-blog-pagination > * {
   display: flex;
   align-items: center;
@@ -4961,4 +4967,11 @@ article.entry-comments {
 
 .newsx-404-page-search .newsx-search-icon svg:last-child {
   display: none;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .newsx-archive-page-header p {
+    width: 100%;
+  }
 }
