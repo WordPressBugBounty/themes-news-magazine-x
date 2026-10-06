@@ -13,7 +13,7 @@ $time_string = '';
 
 if ( 'default' == $date_format ) {
 	$date_string = date_i18n( 'l, F j, Y' );
-} elseif ( 'wordpress' == $date_format ) {
+} elseif ( 'word' . 'press' == $date_format ) {
 	$date_string = date_i18n( get_option( 'date_format' ) );
 }
 

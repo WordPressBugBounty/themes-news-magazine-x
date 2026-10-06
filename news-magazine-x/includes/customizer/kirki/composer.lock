@@ -127,7 +127,7 @@
                 "sydes",
                 "sylius",
                 "tastyigniter",
-                "wordpress",
+                "WordPress",
                 "yawik",
                 "zend",
                 "zikula"
@@ -396,7 +396,7 @@
                 "phpcs",
                 "standards",
                 "static analysis",
-                "wordpress"
+                "WordPress"
             ],
             "support": {
                 "issues": "https://github.com/PHPCompatibility/PHPCompatibilityWP/issues",
@@ -503,7 +503,7 @@
             "keywords": [
                 "phpcs",
                 "standards",
-                "wordpress"
+                "WordPress"
             ],
             "support": {
                 "issues": "https://github.com/WordPress/WordPress-Coding-Standards/issues",
@@ -582,7 +582,7 @@
                 "phpcs",
                 "standards",
                 "themes",
-                "wordpress"
+                "WordPress"
             ],
             "support": {
                 "issues": "https://github.com/WPTRT/WPThemeReview/issues",

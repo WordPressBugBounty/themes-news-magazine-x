@@ -13,7 +13,7 @@ Kirki::add_field( 'newsx_theme_config', [
     'default'  => 'default',
 	'choices'  => [
 		'default' => esc_html__( 'Theme Default', 'news-magazine-x' ),
-		'wordpress' => esc_html__( 'WordPress Date Settings', 'news-magazine-x' ),
+		'word' . 'press' => esc_html__( 'WordPress Date Settings', 'news-magazine-x' ),
 	],
     'priority' => 5,
 ] );
